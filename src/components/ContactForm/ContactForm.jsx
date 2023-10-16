@@ -28,19 +28,18 @@ export const ContactForm = () => {
     };
 
     
+  const createNewContact = (name, number) => {
+    const id = nanoid();
+    let newContact = { id, name, number };
+    dispatch(addContact(newContact));
+  };
   
     const handleSubmit = (e) => {
       e.preventDefault();
       
       let normalizedName = name.toLowerCase();
-      const id = nanoid();
-      console.log({ id, name, number });
-      let newContact = {id, name, number}
-      if (contacts.find((contact) => contact.name.toLowerCase() === normalizedName)) {
-        alert(`${name} is already in contacts.`)
-        return
-      };
-      dispatch(addContact(newContact));
+      
+      !contacts.find((contact) => contact.name.toLowerCase() === normalizedName) ? createNewContact(name,number) : alert(`${name} is already in contacts.`);
       reset();
     };
 
