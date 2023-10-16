@@ -26,6 +26,7 @@ export const App = () => {
     };
   });
   
+  
   const [filterValue, setFilterValue] = useState('');
 
   // componentDidMount() {
