@@ -3,7 +3,7 @@ import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import { useSelector } from 'react-redux';
-import { contactsSelector, deleteContact } from 'redux/contacts/contactsSlice';
+import { contactsSelector } from 'redux/contacts/contactsSlice';
 
 
 
@@ -27,7 +27,7 @@ export const App = () => {
   //   };
   // });
 
-  const contacts = useSelector(contactsSelector);
+  const contacts = useSelector(contactsSelector).contacts;
   
   
   
@@ -114,7 +114,6 @@ export const App = () => {
         
         <ContactList
           contacts={filteredContacts}
-          deleteContact={deleteContact}
         />
 
       </div>
