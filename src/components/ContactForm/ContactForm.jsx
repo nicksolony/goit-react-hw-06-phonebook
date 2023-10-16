@@ -32,6 +32,7 @@ export const ContactForm = () => {
     const id = nanoid();
     let newContact = { id, name, number };
     dispatch(addContact(newContact));
+    reset();
   };
   
     const handleSubmit = (e) => {
@@ -39,8 +40,8 @@ export const ContactForm = () => {
       
       let normalizedName = name.toLowerCase();
       
-      !contacts.find((contact) => contact.name.toLowerCase() === normalizedName) ? createNewContact(name,number) : alert(`${name} is already in contacts.`);
-      reset();
+      !contacts.find((contact) => contact.name.toLowerCase() === normalizedName) ? createNewContact(name, number) : alert(`${name} is already in contacts.`);
+      e.target.name.focus();
     };
 
     const reset = () => {
@@ -53,7 +54,7 @@ export const ContactForm = () => {
     
         
         return (
-             <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} autoFocus={true}>
               <label htmlFor='name'>Name</label>
               <input
                 type="text"
