@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import { useSelector } from 'react-redux';
 import { contactsSelector } from 'redux/contacts/contactsSlice';
+import { filterSelector } from 'redux/filter/filterSlice';
 
 
 
@@ -28,10 +29,10 @@ export const App = () => {
   // });
 
   const contacts = useSelector(contactsSelector).contacts;
+  const filterValue = useSelector(filterSelector).value;
   
   
-  
-  const [filterValue, setFilterValue] = useState('');
+  // const [filterValue, setFilterValue] = useState('');
 
   // componentDidMount() {
   //   const contacts = localStorage.getItem('contacts');
@@ -70,13 +71,14 @@ export const App = () => {
 
   
 
-  const handleFilterInput = (e) => {
-    let { value } = e.target;
-    setFilterValue(value);
-  };
+  // const handleFilterInput = (e) => {
+  //   let { value } = e.target;
+  //   setFilterValue(value);
+  // };
 
 
   const filterContacts = () => {
+  
     let normalizedFilter = filterValue.toLowerCase();  
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter)
     );
@@ -109,7 +111,6 @@ export const App = () => {
 
         <Filter
           value={filterValue}
-          onChange={handleFilterInput}
         />
         
         <ContactList
