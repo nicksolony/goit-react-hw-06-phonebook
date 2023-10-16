@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import { useSelector } from 'react-redux';
-import { contactsSelector } from 'redux/contacts/contactsSlice';
+// import { contactsSelector } from 'redux/contacts/contactsSlice';
 import { filterSelector } from 'redux/filter/filterSlice';
 
 
@@ -28,7 +28,7 @@ export const App = () => {
   //   };
   // });
 
-  const contacts = useSelector(contactsSelector).contacts;
+  // const contacts = useSelector(contactsSelector).contacts;
   const filterValue = useSelector(filterSelector).value;
   
   
@@ -64,9 +64,9 @@ export const App = () => {
   //   }
   // };
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
 
   
@@ -77,19 +77,19 @@ export const App = () => {
   // };
 
 
-  const filterContacts = () => {
+  // const filterContacts = () => {
   
-    let normalizedFilter = filterValue.toLowerCase();  
-    return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
+  //   let normalizedFilter = filterValue.toLowerCase();  
+  //   return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
 
   // const deleteContact = (contactId) => {
   //   setContacts(contacts.filter(contact => contact.id !== contactId));
   // };
   
   
-  let filteredContacts = filterContacts();
+  // let filteredContacts = filterContacts();
 
 
     return (
@@ -113,9 +113,7 @@ export const App = () => {
           value={filterValue}
         />
         
-        <ContactList
-          contacts={filteredContacts}
-        />
+        <ContactList/>
 
       </div>
     );
